@@ -12,6 +12,7 @@
     ./modules/filesystems.nix
     ./modules/librewolf.nix
     ./modules/packages.nix
+    ./modules/container.nix
     ./modules/home.nix
   ];
 
