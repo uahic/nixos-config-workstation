@@ -13,6 +13,8 @@
     vim
     vimPlugins.vim-nix
     git
+    htop
+    iotop
     alejandra
     terminator
     evolution
