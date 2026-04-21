@@ -20,8 +20,8 @@
     options = ["defaults"];
   };
 
-systemd.tmpfiles.rules = [
-  "d /data/workspaces 0755 eumel users -"
-  "d /data/games      0755 eumel users -"
-];
+  systemd.tmpfiles.rules = [
+    "d /data/workspaces 0755 eumel users -"
+    "d /data/games      0755 eumel users -"
+  ];
 }

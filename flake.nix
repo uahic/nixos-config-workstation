@@ -7,16 +7,21 @@
 
     home-manager = {
       url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs";  # gleiche nixpkgs-Version
+      inputs.nixpkgs.follows = "nixpkgs"; # gleiche nixpkgs-Version
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, ... }: {
+  outputs = {
+    self,
+    nixpkgs,
+    home-manager,
+    ...
+  }: {
     nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
         ./configuration.nix
-        home-manager.nixosModules.home-manager  # ← ersetzt <home-manager/nixos>
+        home-manager.nixosModules.home-manager # ← ersetzt <home-manager/nixos>
       ];
     };
   };

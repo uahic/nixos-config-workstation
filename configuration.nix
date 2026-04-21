@@ -1,5 +1,8 @@
-{ config, pkgs, ... }:
 {
+  config,
+  pkgs,
+  ...
+}: {
   imports = [
     ./hardware-configuration.nix
     ./modules/sunshine.nix
@@ -11,8 +14,8 @@
     ./modules/packages.nix
     ./modules/home.nix
   ];
-  
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+
+  nix.settings.experimental-features = ["nix-command" "flakes"];
 
   networking.hostName = "nixos";
   time.timeZone = "Europe/Berlin";
@@ -37,7 +40,7 @@
     "nvidia.NVreg_TemporaryFilePath=/var/tmp"
     "iomem=relaxed"
   ];
-  boot.supportedFilesystems = [ "nfs" ];
+  boot.supportedFilesystems = ["nfs"];
 
   services.openssh.enable = true;
   services.printing.enable = true;
@@ -54,9 +57,8 @@
   users.users.eumel = {
     isNormalUser = true;
     description = "eumel";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = ["networkmanager" "wheel"];
   };
-
 
   system.stateVersion = "25.11";
 }
