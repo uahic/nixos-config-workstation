@@ -7,6 +7,7 @@
     ./modules/desktop.nix
     ./modules/network.nix
     ./modules/filesystems.nix
+    ./modules/librewolf.nix
     ./modules/packages.nix
     ./modules/home.nix
 #    <home-manager/nixos>
