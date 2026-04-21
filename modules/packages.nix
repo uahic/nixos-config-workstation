@@ -15,16 +15,18 @@
     git
     htop
     iotop
+    stow
     alejandra
     terminator
     evolution
     nvtopPackages.nvidia
     vscode-fhs
+    #    podman
     gnomeExtensions.appindicator
     gnomeExtensions.dash-to-dock
   ];
 
-  programs.firefox.enable = true;
+  #programs.firefox.enable = false;
   programs.steam = {
     enable = true;
     package = pkgs.steam;
