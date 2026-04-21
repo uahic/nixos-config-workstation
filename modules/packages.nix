@@ -3,6 +3,8 @@
   pkgs,
   ...
 }: {
+  nixpkgs.config.allowUnfree = true;
+
   environment.systemPackages = with pkgs; [
     wget
     curl
@@ -19,4 +21,10 @@
     gnomeExtensions.appindicator
     gnomeExtensions.dash-to-dock
   ];
+
+  programs.firefox.enable = true;
+  programs.steam = {
+    enable = true;
+    package = pkgs.steam;
+  };
 }

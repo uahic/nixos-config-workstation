@@ -10,7 +10,6 @@
     ./modules/librewolf.nix
     ./modules/packages.nix
     ./modules/home.nix
-#    <home-manager/nixos>
   ];
   
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
@@ -58,12 +57,6 @@
     extraGroups = [ "networkmanager" "wheel" ];
   };
 
-  nixpkgs.config.allowUnfree = true;
-  programs.firefox.enable = true;
-  programs.steam = {
-    enable = true;
-    package = pkgs.steam;
-  };
 
   system.stateVersion = "25.11";
 }
