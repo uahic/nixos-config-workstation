@@ -3,6 +3,6 @@ repos:
     hooks:
       - id: alejandra
         name: alejandra
-        entry: alejandra
+        entry: ./scripts/format_code.sh
         language: system
         files: \.nix$
