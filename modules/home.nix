@@ -11,12 +11,10 @@
         "github.com" = {
           kexAlgorithms = ["mlkem768x25519-sha256" "curve25519-sha256"];
         };
-      };
-      matchBlocks = {
         "192.168.0.234" = {
           kexAlgorithms = ["mlkem768x25519-sha256" "curve25519-sha256"];
-          User = "pluton";
-          ForwardX11 = "yes";
+          user = "pluton";
+          forwardX11 = true;
         };
       };
     };
