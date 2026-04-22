@@ -20,6 +20,9 @@
       "org/gnome/desktop/input-sources" = {
         xkb-options = ["altwin:swap_alt_win"];
       };
+      "org/gnome/desktop/wm/preferences" = {
+	focus-mode = "sloppy";
+      };
     };
   };
 }
