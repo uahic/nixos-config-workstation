@@ -59,6 +59,7 @@
     isNormalUser = true;
     description = "eumel";
     extraGroups = ["networkmanager" "wheel"];
+    shell = pkgs.zsh;
   };
 
   system.stateVersion = "25.11";

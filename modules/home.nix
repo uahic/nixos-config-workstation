@@ -6,10 +6,21 @@
   home-manager.users.eumel = {pkgs, ...}: {
     home.stateVersion = "25.11";
 
+    programs.zsh = {
+      enable = true;
+      oh-my-zsh = {
+        enable = true;
+        theme = "robbyrussell";
+        plugins = ["git" "direnv"];
+      };
+    };
+
     # Direnv fur automatisches sourcen von flakes
     programs.direnv = {
       enable = true;
       nix-direnv.enable = true;
+      enableBashIntegration = true;
+      enableZshIntegration = true;
     };
 
     # SSH Settings
