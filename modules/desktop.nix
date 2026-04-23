@@ -5,9 +5,9 @@
 }: {
   services.xserver = {
     enable = true;
-    displayManager.gdm.enable = true;
-    displayManager.gdm.wayland = true;
-    desktopManager.gnome.enable = true;
+    #    displayManager.gdm.enable = true;
+    #    displayManager.gdm.wayland = true;
+    #    desktopManager.gnome.enable = true;
     videoDrivers = ["nvidia"];
     deviceSection = ''
       BusID "PCI:11:0:0"
@@ -18,6 +18,9 @@
       options = "altwin:swap_alt_win";
     };
   };
+  services.desktopManager.gnome.enable = true;
+  services.displayManager.gdm.enable = true;
+  services.displayManager.gdm.wayland = true;
 
   environment.gnome.excludePackages = with pkgs; [
     gnome-tour
