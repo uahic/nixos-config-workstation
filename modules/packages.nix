@@ -34,6 +34,8 @@
     package = pkgs.steam;
   };
 
+  programs.zsh.enable = true;
+
   environment.sessionVariables = {
     OBSIDIAN_USE_WAYLAND = "1";
   };
