@@ -5,8 +5,17 @@
 }: {
   home-manager.users.eumel = {pkgs, ...}: {
     home.stateVersion = "25.11";
+
+    # Direnv fur automatisches sourcen von flakes
+    programs.direnv = {
+      enable = true;
+      nix-direnv.enable = true;
+    };
+
+    # SSH Settings
     programs.ssh = {
       enable = true;
+      enableDefaultConfig = false;
       matchBlocks = {
         "github.com" = {
           kexAlgorithms = ["mlkem768x25519-sha256" "curve25519-sha256"];
