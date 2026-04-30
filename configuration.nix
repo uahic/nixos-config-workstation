@@ -1,10 +1,10 @@
-{
-  config,
-  pkgs,
-  ...
-}: {
+{...}: {
   imports = [
     ./hardware-configuration.nix
+    ./modules/boot.nix
+    ./modules/audio.nix
+    ./modules/users.nix
+    ./modules/gaming.nix
     ./modules/sunshine.nix
     ./modules/nvidia.nix
     ./modules/desktop.nix
@@ -13,10 +13,15 @@
     ./modules/librewolf.nix
     ./modules/packages.nix
     ./modules/container.nix
+    ./modules/security.nix
+    ./modules/ssh.nix
     ./modules/home.nix
   ];
 
   nix.settings.experimental-features = ["nix-command" "flakes"];
+  nix.settings.allowed-users = ["@wheel"];
+  nix.settings.trusted-users = ["root"]; # NICHT alle wheel-User
+  nix.settings.sandbox = true;
 
   networking.hostName = "nixos";
   time.timeZone = "Europe/Berlin";
@@ -34,46 +39,7 @@
     LC_TIME = "de_DE.UTF-8";
   };
 
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
-  boot.kernelParams = [
-    "nvidia.NVreg_PreserveVideoMemoryAllocations=1"
-    "nvidia.NVreg_TemporaryFilePath=/var/tmp"
-    "iomem=relaxed"
-  ];
-  boot.supportedFilesystems = ["nfs"];
-
-  services.openssh.enable = true;
   services.printing.enable = true;
-
-  security.rtkit.enable = true;
-  services.pulseaudio.enable = false;
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-  };
-
-  users.users.eumel = {
-    isNormalUser = true;
-    description = "eumel";
-    extraGroups = ["networkmanager" "wheel"];
-    shell = pkgs.zsh;
-  };
-
-  # Kill processes before Swap-hell in RAM starts
-  services.earlyoom = {
-    enable = true;
-    freeMemThreshold = 5; # kill bei <5% freiem RAM (default 10)
-    freeSwapThreshold = 10; # kill bei <10% freiem Swap (default 10)
-    extraArgs = [
-      "--avoid"
-      "'^(Xorg|sshd|systemd.*)$'" # wichtige Prozesse verschonen
-      "--prefer"
-      "'^(python|python3|jupyter)$'" # bevorzugt ML-Prozesse killen
-    ];
-  };
 
   system.stateVersion = "25.11";
 }
