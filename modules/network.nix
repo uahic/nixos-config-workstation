@@ -12,4 +12,11 @@
   networking.defaultGateway = "192.168.0.1";
   networking.nameservers = ["1.1.1.1"];
   networking.networkmanager.enable = true;
+  networking.nftables.enable = true; # nftables statt iptables-legacy
+  networking.firewall = {
+    enable = true;
+    allowedTCPPorts = []; # nur explizit oeffnen
+    allowedUDPPorts = [];
+    logRefusedConnections = true;
+  };
 }
