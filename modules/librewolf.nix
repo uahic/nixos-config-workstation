@@ -17,7 +17,7 @@
       postBuild = ''
         rm $out/bin/librewolf
         makeWrapper ${pkgs.systemd}/bin/systemd-run $out/bin/librewolf \
-          --add-flags "--user --scope -p MemoryMax=5G -p MemoryHigh=4G -- ${base}/bin/librewolf"
+          --add-flags "--user --scope -p MemoryMax=10G -p MemoryHigh=7G -p CPUQuota=400% -- ${base}/bin/librewolf"
 
         find $out/share/applications -name "*.desktop" | while read f; do
           cp --remove-destination "$(readlink "$f")" "$f"
@@ -35,9 +35,10 @@ in {
       DisableFirefoxStudies = true;
       Preferences = {
         # Memory management
+        "browser.tabs.inTitlebar" = 0;
         "browser.tabs.unloadOnLowMemory" = true;
         "browser.low_commit_space_threshold_mb" = 1024; # Tab-Unload unter 1 GB freiem RAM
-        "browser.cache.memory.capacity" = 524288; # Memory-Cache max 512 MB (in KB)
+        "browser.cache.memory.capacity" = 2097152; # Memory-Cache max 2 GB (in KB)
         "dom.ipc.processCount" = 4; # Content-Prozesse begrenzen (Standard: 8)
 
         "cookiebanners.service.mode.privateBrowsing" = 2;

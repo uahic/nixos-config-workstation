@@ -12,6 +12,7 @@
   networking.defaultGateway = "192.168.0.1";
   networking.nameservers = ["1.1.1.1"];
   networking.networkmanager.enable = true;
+  networking.networkmanager.unmanaged = ["br-microvms" "vm-openclaw"];
   networking.nftables.enable = true; # nftables statt iptables-legacy
   networking.firewall = {
     enable = true;

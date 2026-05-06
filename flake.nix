@@ -9,9 +9,14 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs"; # gleiche nixpkgs-Version
     };
+    microvm = {
+      url = "github:astro/microvm.nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    nix-openclaw.url = "github:openclaw/nix-openclaw";
   };
 
-  outputs = {
+  outputs = inputs @ {
     self,
     nixpkgs,
     home-manager,
@@ -19,6 +24,7 @@
   }: {
     nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
+      specialArgs = {inherit inputs;}; # ← damit die Module `inputs` sehen
       modules = [
         ./configuration.nix
         home-manager.nixosModules.home-manager # ← ersetzt <home-manager/nixos>
