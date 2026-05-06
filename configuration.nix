@@ -16,6 +16,8 @@
     ./modules/security.nix
     ./modules/ssh.nix
     ./modules/home.nix
+    ./modules/music.nix
+    ./modules/overlays.nix
   ];
 
   nix.settings.experimental-features = ["nix-command" "flakes"];

@@ -10,6 +10,16 @@
     shell = pkgs.zsh;
   };
 
+  users.users.claw = {
+    isSystemUser = false;
+    isNormalUser = true;
+    description = "OpenClaw sandbox user";
+    createHome = false;
+    shell = pkgs.bash;
+    extraGroups = []; # bewusst leer: kein wheel, video, render, docker
+    autoSubUidGidRange = true; # subuid/subgid für rootless Podman
+  };
+
   services.earlyoom = {
     enable = true;
     freeMemThreshold = 5; # kill bei <5% freiem RAM (default 10)

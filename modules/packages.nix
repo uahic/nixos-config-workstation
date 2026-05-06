@@ -9,6 +9,7 @@
     vim
     vimPlugins.vim-nix
     git
+    tree
     htop
     iotop
     stow
@@ -25,5 +26,16 @@
 
   environment.sessionVariables = {
     OBSIDIAN_USE_WAYLAND = "1";
+  };
+
+  services.ollama = {
+    enable = true;
+    package = pkgs.ollama-cuda;
+    host = "0.0.0.0";
+    port = 11434;
+    environmentVariables = {
+      CUDA_DEVICE_ORDER = "PCI_BUS_ID";
+      CUDA_VISIBLE_DEVICES = "1,0";
+    };
   };
 }
