@@ -13,15 +13,19 @@
     htop
     iotop
     stow
+    mupdf
+    gimp
     alejandra
     terminator
     evolution
     obsidian
     pnpm
+    mtr # MTR fur udp monitoring
     vscode-fhs
     pre-commit
     gnomeExtensions.appindicator
     gnomeExtensions.dash-to-dock
+    libreoffice
   ];
 
   environment.sessionVariables = {

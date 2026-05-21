@@ -4,7 +4,7 @@
   ...
 }: {
   environment.systemPackages = with pkgs; [
-    musescore
+    #musescore
     muse-sounds-manager
   ];
   programs.nix-ld.enable = true;

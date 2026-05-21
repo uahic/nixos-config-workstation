@@ -1,4 +1,4 @@
-{...}: {
+{pkgs, ...}: {
   imports = [
     ./hardware-configuration.nix
     ./modules/boot.nix
@@ -17,13 +17,19 @@
     ./modules/ssh.nix
     ./modules/home.nix
     ./modules/music.nix
-    ./modules/overlays.nix
+    ./modules/openclaw.nix
+    ./modules/keyboard.nix
+    ./overlays.nix
   ];
 
   nix.settings.experimental-features = ["nix-command" "flakes"];
   nix.settings.allowed-users = ["@wheel"];
   nix.settings.trusted-users = ["root"]; # NICHT alle wheel-User
   nix.settings.sandbox = true;
+
+  services.flatpak.enable = true;
+  xdg.portal.enable = true;
+  xdg.portal.extraPortals = [pkgs.xdg-desktop-portal-gtk];
 
   networking.hostName = "nixos";
   time.timeZone = "Europe/Berlin";
