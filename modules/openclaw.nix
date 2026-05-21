@@ -10,6 +10,8 @@
     ./openclaw-vm.nix
   ];
 
+  nixpkgs.config.permittedInsecurePackages = ["openclaw-2026.4.22"];
+
   # ─── Bridge + tap manuell anlegen (kein networkd nötig) ──────
   systemd.services.openclaw-net-setup = {
     description = "Bridge + tap für OpenClaw microvm";
@@ -84,11 +86,4 @@
       fi
     '';
   };
-
-  # microvm.nix legt den User automatisch an, aber zur Sicherheit:
-  users.users.microvm = {
-    isSystemUser = true;
-    group = "microvm";
-  };
-  users.groups.microvm = {};
 }

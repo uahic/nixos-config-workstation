@@ -26,7 +26,7 @@
       microvm = {
         hypervisor = "qemu";
         vcpu = 2;
-        mem = 2048;
+        mem = 4096;
 
         interfaces = [
           {
@@ -58,7 +58,7 @@
       networking.useNetworkd = true;
       networking.useDHCP = false;
       systemd.network.networks."10-eth" = {
-        matchConfig.Name = "eth*";
+        matchConfig.Name = "ether";
         networkConfig = {
           Address = "10.0.100.2/24";
           Gateway = "10.0.100.1";
@@ -122,46 +122,59 @@
       # ─── OpenClaw ────────────────────────────────────────────
       home-manager.useGlobalPkgs = true;
       home-manager.useUserPackages = true;
+
       home-manager.users.openclaw = {...}: {
-        imports = [inputs.nix-openclaw.homeManagerModules.default];
+        imports = [inputs.nix-openclaw.homeManagerModules.openclaw];
 
         home.stateVersion = "24.11";
 
-        programs.openclaw.instances.default = {
-          enable = true;
-          config = {
-            gateway = {
-              mode = "local";
-              bind = "loopback";
-              auth.token = "/run/secrets/gateway-token";
-            };
+        programs.openclaw = {
+          # Bundled plugins toggles
+          bundledPlugins = {
+            summarize.enable = true; # URL/PDF/Video Summary
+          };
+          instances.default = {
+            enable = true;
+            config = {
+              gateway = {
+                mode = "local";
+                auth.token = "/run/secrets/gateway-token";
+              };
 
-            agents.defaults.model = {
-              provider = "ollama";
-              baseUrl = "http://10.0.100.1:11434/v1";
-              #primary  = "llama3.1:8b";   # ← dein gepulltes Modell
-              primary = "qwen3:32b";
-              apiKey = "ollama";
-            };
+              # Custom Ollama-Provider für unsere Host-Adresse registrieren
+              models = {
+                mode = "merge";
+                providers = {
+                  ollama-host = {
+                    api = "openai-completions"; # ← war "type"
+                    baseUrl = "http://10.0.100.1:11434/v1";
+                    apiKey = "ollama"; # Ollama ignoriert ihn
+                    models = [
+                      {
+                        id = "qwen3:32b";
+                        name = "Qwen3 32B (local)";
+                        reasoning = true;
+                        input = ["text"];
+                        contextWindow = 32768;
+                        maxTokens = 8192;
+                      }
+                    ];
+                  };
+                };
+              };
 
-            plugins.web-search = {
-              enable = true;
-              provider = "searxng";
-              searxng = {
-                baseUrl = "http://127.0.0.1:8080";
-                format = "json";
+              agents.defaults.model = {
+                primary = "ollama-host/qwen3:32b";
+                fallbacks = [];
+              };
+
+              # WICHTIG: Allowlist — sonst lehnt OpenClaw das Modell ab
+              agents.defaults.models = {
+                "ollama-host/qwen3:32b" = {
+                  alias = "qwen3";
+                };
               };
             };
-
-            toolSecurity = "allowlist";
-            toolAllowlist = [
-              "read"
-              "write"
-              "edit"
-              "web_search"
-              "web_fetch"
-              "message"
-            ];
           };
         };
       };
