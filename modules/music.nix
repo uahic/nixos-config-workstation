@@ -17,16 +17,16 @@
     glib
     zlib
     stdenv.cc.cc.lib
-    xorg.libX11
-    xorg.libXext
-    xorg.libXrandr
-    xorg.libXcursor
-    xorg.libXi
-    xorg.libxcb
-    xorg.libXrender
-    xorg.libXfixes
-    xorg.libXcomposite
-    xorg.libXdamage
-    xorg.libXtst
+    libx11
+    libxext
+    libxrandr
+    libxcursor
+    libxi
+    libxcb
+    libxrender
+    libxfixes
+    libxcomposite
+    libxdamage
+    libxtst
   ];
 }

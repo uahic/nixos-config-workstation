@@ -10,7 +10,7 @@
     ./openclaw-vm.nix
   ];
 
-  nixpkgs.config.permittedInsecurePackages = ["openclaw-2026.4.22"];
+  nixpkgs.config.permittedInsecurePackages = ["openclaw-2026.5.12"];
 
   # ─── Bridge + tap manuell anlegen (kein networkd nötig) ──────
   systemd.services.openclaw-net-setup = {

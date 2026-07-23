@@ -8,7 +8,7 @@
 
     home-manager = {
       url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs"; # gleiche nixpkgs-Version
+      inputs.nixpkgs.follows = "nixpkgs";
     };
     microvm = {
       url = "github:astro/microvm.nix";

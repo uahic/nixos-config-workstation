@@ -17,8 +17,10 @@
     ./modules/ssh.nix
     ./modules/home.nix
     ./modules/music.nix
-    ./modules/openclaw.nix
+    #./modules/openclaw.nix
     ./modules/keyboard.nix
+    ./modules/tailscale.nix
+    ./modules/waydroid.nix
     ./overlays.nix
   ];
 
@@ -26,6 +28,21 @@
   nix.settings.allowed-users = ["@wheel"];
   nix.settings.trusted-users = ["root"]; # NICHT alle wheel-User
   nix.settings.sandbox = true;
+  nix.settings.max-jobs = 3; # max. 3 parallele Jobs
+  nix.settings.cores = 2; # je Job 2 Kerne → max. 6 Kerne (Hälfte von 12)
+
+  systemd.slices."nix-builds".sliceConfig = {
+    CPUAccounting = true;
+    CPUQuota = "200%";
+    MemoryMax = "10G";
+    MemoryHigh = "7G";
+  };
+  systemd.services.nix-daemon.serviceConfig = {
+    Slice = "nix-builds.slice";
+    CPUQuota = "200%";
+    MemoryMax = "10G";
+    MemoryHigh = "7G";
+  };
 
   services.flatpak.enable = true;
   xdg.portal.enable = true;

@@ -5,7 +5,8 @@
   ...
 }: {
   home-manager.users.eumel = {pkgs, ...}: {
-    home.stateVersion = "25.11";
+    home.stateVersion = "26.05";
+    home.enableNixpkgsReleaseCheck = false;
 
     programs.zsh = {
       enable = true;

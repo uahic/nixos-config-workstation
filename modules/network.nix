@@ -14,6 +14,9 @@
   networking.networkmanager.enable = true;
   networking.networkmanager.unmanaged = ["br-microvms" "vm-openclaw"];
   networking.networkmanager.dns = "none";
+  networking.networkmanager.wifi.macAddress = "random";
+  networking.networkmanager.wifi.scanRandMacAddress = true;
+  networking.networkmanager.ethernet.macAddress = "random";
   networking.nftables.enable = true; # nftables statt iptables-legacy
   networking.firewall = {
     enable = true;
