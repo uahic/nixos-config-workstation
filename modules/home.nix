@@ -1,9 +1,10 @@
 {
-  config,
   lib,
   pkgs,
   ...
-}: {
+}: let
+  local = import ../local.nix;
+in {
   home-manager.users.eumel = {pkgs, ...}: {
     home.stateVersion = "26.05";
     home.enableNixpkgsReleaseCheck = false;
@@ -33,10 +34,10 @@
         "github.com" = {
           kexAlgorithms = ["mlkem768x25519-sha256" "curve25519-sha256"];
         };
-        "192.168.0.234" = {
+        "${local.nasIp}" = {
           #kexAlgorithms = ["mlkem768x25519-sha256" "curve25519-sha256"];
-          hostname = "192.168.0.234";
-          user = "pluton";
+          hostname = local.nasIp;
+          user = local.nasUser;
           port = 22;
           forwardX11 = true;
         };

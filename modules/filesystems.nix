@@ -1,10 +1,8 @@
-{
-  config,
-  pkgs,
-  ...
-}: {
+{...}: let
+  local = import ../local.nix;
+in {
   fileSystems."/mnt/share" = {
-    device = "192.168.0.234:/zpool0/share";
+    device = "${local.nasIp}:${local.nasSharePath}";
     fsType = "nfs";
     options = ["vers=4" "x-systemd.automount" "noauto"];
   };
