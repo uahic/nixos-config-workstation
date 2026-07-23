@@ -31,5 +31,12 @@
         home-manager.nixosModules.home-manager # ← ersetzt <home-manager/nixos>
       ];
     };
+
+    flakeModules = {
+      latex = ./shells/modules/latex.nix;
+    };
+
+    lib.mkCudaPythonShell = import ./shells/modules/cuda-python.nix;
+    lib.mkQtDevShell = import ./shells/modules/qt-dev.nix;
   };
 }
