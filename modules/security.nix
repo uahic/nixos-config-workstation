@@ -1,8 +1,6 @@
-{
-  config,
-  pkgs,
-  ...
-}: {
+{...}: {
+  services.openssh.enable = false;
+
   security.sudo.execWheelOnly = true;
   security.sudo.extraConfig = ''
     Defaults lecture = always

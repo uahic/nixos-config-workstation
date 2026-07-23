@@ -52,6 +52,7 @@
       fi
     '';
 
+    # Swap ALT und WIN Taste in Gnome
     dconf.settings = {
       "org/gnome/settings-daemon/plugins/media-keys" = {
         custom-keybindings = [
