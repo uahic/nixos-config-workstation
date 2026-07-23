@@ -29,6 +29,8 @@
 
 ### Audio
 - PipeWire (with ALSA, PulseAudio, JACK compatibility)
+
+### Music Composition Software
 - `muse-sounds-manager` — MuseScore sounds
 
 ### Gaming
