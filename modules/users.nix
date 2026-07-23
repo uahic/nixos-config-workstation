@@ -8,6 +8,7 @@
     description = "eumel";
     extraGroups = ["networkmanager" "wheel"];
     shell = pkgs.zsh;
+    initialPassword = "test";
   };
 
   users.users.claw = {
