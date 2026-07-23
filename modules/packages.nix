@@ -12,17 +12,17 @@
     tree
     htop
     iotop
-    stow
-    mupdf
+    stow # For dot files
+    mupdf #
     gimp
-    alejandra
+    alejandra # Nix File formatting
     terminator
-    evolution
-    obsidian
-    pnpm
+    evolution # Email
+    obsidian # Markdown note editor
+    pnpm # Node package manager for web dev
     mtr # MTR fur udp monitoring
-    vscode-fhs
-    pre-commit
+    vscode-fhs # Nix compatible VSCode
+    pre-commit # Git pre-commit
     gnomeExtensions.appindicator
     gnomeExtensions.dash-to-dock
     libreoffice
@@ -30,16 +30,5 @@
 
   environment.sessionVariables = {
     OBSIDIAN_USE_WAYLAND = "1";
-  };
-
-  services.ollama = {
-    enable = true;
-    package = pkgs.ollama-cuda;
-    host = "0.0.0.0";
-    port = 11434;
-    environmentVariables = {
-      CUDA_DEVICE_ORDER = "PCI_BUS_ID";
-      CUDA_VISIBLE_DEVICES = "1,0";
-    };
   };
 }

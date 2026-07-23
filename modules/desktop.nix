@@ -1,8 +1,10 @@
-{
-  config,
-  pkgs,
-  ...
-}: {
+{pkgs, ...}: {
+  hardware.ckb-next.enable = true;
+
+  services.flatpak.enable = true;
+  xdg.portal.enable = true;
+  xdg.portal.extraPortals = [pkgs.xdg-desktop-portal-gtk];
+
   services.xserver = {
     enable = true;
     videoDrivers = ["nvidia"];
