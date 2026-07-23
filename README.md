@@ -1,5 +1,7 @@
 # NixOS Config for my primary AI-Development/Gaming Workstation
 
+Unwanted packages (modules) can be commented out in the configuration.nix file
+
 ## Packages
 
 ### System Tools
@@ -106,6 +108,22 @@ For DeepLearning projects, reusable shells are exported via `lib.mkCudaPythonShe
 3. ```nix-shell -p pre-commit --run "pre-commit install"```
 4. ```pre-commit install```
 5. ```bash run_stow.sh```
+
+# Common Commands
+
+| Command | Description |
+|---------|-------------|
+| `sudo nixos-rebuild switch --flake .` | Build and activate immediately |
+| `sudo nixos-rebuild boot --flake .` | Build and activate on next boot |
+| `sudo nixos-rebuild test --flake .` | Activate without making it the boot default |
+| `sudo nixos-rebuild dry-activate --flake .` | Show what would change without applying |
+| `sudo nixos-rebuild build --flake .` | Build only, no activation |
+| `nixos-rebuild build-vm --flake .` | Build a QEMU VM (login: user `eumel`, password `test`) |
+| `nix flake update` | Update all flake inputs |
+| `nix flake update nixpkgs` | Update only nixpkgs |
+| `nix-collect-garbage -d` | Delete all old generations |
+| `nix-collect-garbage --delete-older-than 30d` | Delete generations older than 30 days |
+| `sudo nix-env --list-generations --profile /nix/var/nix/profiles/system` | List all system generations |
 
 # Design Decisions
 
