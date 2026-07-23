@@ -114,7 +114,7 @@ home-manager can manage dotfiles via `home.file`, which sets symlinks automatica
 
 # Notes
 
-For games like SWG (enable borderless window) + this as launch options:
+For games in steam (enable borderless window) + this as launch options:
 ```
 SDL_VIDEO_MINIMIZE_ON_FOCUS_LOSS=0 PROTON_NO_GRAB=1 %command%
 ```
