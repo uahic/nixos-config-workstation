@@ -127,6 +127,7 @@
         imports = [inputs.nix-openclaw.homeManagerModules.openclaw];
 
         home.stateVersion = "24.11";
+        home.enableNixpkgsReleaseCheck = false;
 
         programs.openclaw = {
           # Bundled plugins toggles

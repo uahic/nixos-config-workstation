@@ -20,6 +20,21 @@
     autoSubUidGidRange = true; # subuid/subgid für rootless Podman
   };
 
+  users.users.eumel = {
+    subUidRanges = [
+      {
+        startUid = 100000;
+        count = 65536;
+      }
+    ];
+    subGidRanges = [
+      {
+        startGid = 100000;
+        count = 65536;
+      }
+    ];
+  };
+
   services.earlyoom = {
     enable = true;
     freeMemThreshold = 5; # kill bei <5% freiem RAM (default 10)
