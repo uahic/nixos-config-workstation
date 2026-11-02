@@ -6,6 +6,11 @@ in {
     fsType = "nfs";
     options = ["vers=4" "x-systemd.automount" "noauto"];
   };
+  fileSystems."/mnt/books" = {
+    device = "${local.nasIp}:${local.nasBooksPath}";
+    fsType = "nfs";
+    options = ["vers=4" "x-systemd.automount" "noauto"];
+  };
 
   fileSystems."/mnt/980pro" = {
     device = "/dev/disk/by-uuid/143ED0883ED063F0";

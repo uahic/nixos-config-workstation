@@ -7,7 +7,7 @@
 }: {
   services.tailscale = {
     enable = true;
-    openFirewall = true;
+    openFirewall = false; # Fallback ueber DERP-Relay reicht fuer Client-Nutzung
     useRoutingFeatures = "client";
   };
 

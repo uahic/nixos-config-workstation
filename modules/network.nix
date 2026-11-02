@@ -26,23 +26,23 @@ in {
   # ─── systemd-resolved deaktivieren ───────────────────────────
   services.resolved.enable = false;
 
-  # --- Nur lokalen homeserver als DNS erlauben (und meinen remote) ---
-  networking.nftables.tables.dns-redirect = {
-    family = "inet";
-    content = ''
-      chain output-dns {
-        type filter hook output priority 0; policy accept;
+  #   # --- Nur lokalen homeserver als DNS erlauben (und meinen remote) ---
+  #   networking.nftables.tables.dns-redirect = {
+  #     family = "inet";
+  #     content = ''
+  #       chain output-dns {
+  #         type filter hook output priority 0; policy accept;
 
-        # Eigene DNS-Anfragen an AdGuard erlauben
-        ip daddr ${local.nasIp} udp dport 53 accept
-        ip daddr ${local.nasIp} tcp dport 53 accept
-        ip daddr ${local.externalDns} udp dport 53 accept
-        ip daddr ${local.externalDns} tcp dport 53 accept
+  #         # Eigene DNS-Anfragen an AdGuard erlauben
+  #         ip daddr ${local.nasIp} udp dport 53 accept
+  #         ip daddr ${local.nasIp} tcp dport 53 accept
+  #         ip daddr ${local.externalDns} udp dport 53 accept
+  #         ip daddr ${local.externalDns} tcp dport 53 accept
 
-        # Alle anderen DNS-Anfragen nach außen blocken
-        udp dport 53 reject
-        tcp dport 53 reject
-      }
-    '';
-  };
+  #         # Alle anderen DNS-Anfragen nach außen blocken
+  #         udp dport 53 reject
+  #         tcp dport 53 reject
+  #       }
+  #     '';
+  #   };
 }

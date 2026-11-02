@@ -335,7 +335,7 @@
     ],
     "latex-workshop.latex.recipe.default": "latexmk",
     "[typescriptreact]": {
-        "editor.defaultFormatter": "rvest.vs-code-prettier-eslint"
+        "editor.defaultFormatter": "vscode.typescript-language-features"
     },
     "[kotlin]": {
         "editor.inlineSuggest.enabled": true
@@ -344,11 +344,12 @@
         "*.kt": "kotlin"
     },
     "[typescript]": {
-        "editor.defaultFormatter": "rvest.vs-code-prettier-eslint"
+        "editor.defaultFormatter": "vscode.typescript-language-features"
     },
     "java.import.maven.enabled": false,
     "java.import.gradle.enabled": false,
     "java.server.launchMode": "LightWeight",
     "claudeCode.preferredLocation": "sidebar",
     "claudeCode.selectedModel": "sonnet",
+    "claudeCode.hideOnboarding": true,
 }
