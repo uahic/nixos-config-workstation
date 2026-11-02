@@ -45,4 +45,9 @@ in {
   environment.sessionVariables = {
     OBSIDIAN_USE_WAYLAND = "1";
   };
+
+  programs.vim = {
+    enable = true;
+    defaultEditor = true;
+  };
 }

@@ -17,6 +17,17 @@
     };
     nix-openclaw.url = "github:openclaw/nix-openclaw";
 
+    # Hermes Agent (Nous Research): NixOS module used by modules/ai.nix.
+    # No `follows` on nixpkgs on purpose: its build pins a Python version
+    # that a different nixpkgs may not provide.
+    hermes-agent.url = "github:NousResearch/hermes-agent";
+
+    # Encrypted secrets in the repo, decrypted at activation (modules/ai.nix).
+    sops-nix = {
+      url = "github:Mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     gpu-unlock = {
       url = "github:Zagitta/gpu-unlock";
       flake = false;
