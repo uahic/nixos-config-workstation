@@ -1,7 +1,17 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  inputs,
+  ...
+}: let
+  vscodePkgs = import inputs.nixpkgs-vscode {
+    inherit (pkgs) system;
+    config.allowUnfree = true; # eigener pkg-Satz -> eigenes Unfree notwendig
+  };
+in {
   nixpkgs.config.allowUnfree = true;
 
   environment.systemPackages = with pkgs; [
+    vscodePkgs.vscode-fhs # Nix compatible VSCode
     wget
     curl
     cifs-utils
@@ -12,6 +22,7 @@
     tree
     htop
     iotop
+    iptables
     stow # For dot files
     mupdf #
     gimp
@@ -21,12 +32,15 @@
     obsidian # Markdown note editor
     pnpm # Node package manager for web dev
     mtr # MTR fur udp monitoring
-    vscode-fhs # Nix compatible VSCode
     pre-commit # Git pre-commit
     gnomeExtensions.appindicator
     gnomeExtensions.dash-to-dock
     libreoffice
+    mullvad-browser
+    mullvad-vpn
   ];
+
+  services.mullvad-vpn.enable = true;
 
   environment.sessionVariables = {
     OBSIDIAN_USE_WAYLAND = "1";

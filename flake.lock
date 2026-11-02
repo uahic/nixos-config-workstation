@@ -18,6 +18,22 @@
         "type": "github"
       }
     },
+    "gpu-unlock": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1792856848,
+        "narHash": "sha256-6FaDuPojB707ds7gkQY/g/+m4Tnz1xHZ95UjNfFxBJc=",
+        "owner": "Zagitta",
+        "repo": "gpu-unlock",
+        "rev": "af28cbbfd3d922a659227ecfb7369adfd924cf03",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Zagitta",
+        "repo": "gpu-unlock",
+        "type": "github"
+      }
+    },
     "home-manager": {
       "inputs": {
         "nixpkgs": [
@@ -152,6 +168,22 @@
         "type": "github"
       }
     },
+    "nixpkgs-vscode": {
+      "locked": {
+        "lastModified": 1787498568,
+        "narHash": "sha256-9i/VTdusq/+NM/tz+J1Re+ojkMB8MBf0QshnYfzHz30=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "56c02bc00adcf003215cc4bd996d6efaf4cff188",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "nixpkgs_2": {
       "locked": {
         "lastModified": 1767767207,
@@ -212,11 +244,13 @@
     },
     "root": {
       "inputs": {
+        "gpu-unlock": "gpu-unlock",
         "home-manager": "home-manager",
         "microvm": "microvm",
         "nix-openclaw": "nix-openclaw",
         "nixpkgs": "nixpkgs_3",
-        "nixpkgs-stable": "nixpkgs-stable"
+        "nixpkgs-stable": "nixpkgs-stable",
+        "nixpkgs-vscode": "nixpkgs-vscode"
       }
     },
     "spectrum": {

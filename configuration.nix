@@ -7,6 +7,7 @@
     ./modules/gaming.nix
     ./modules/sunshine.nix
     ./modules/nvidia.nix
+    ./modules/gpu-unlock.nix
     ./modules/desktop.nix
     ./modules/network.nix
     ./modules/filesystems.nix
@@ -19,6 +20,7 @@
     ./modules/ollama.nix
     #./modules/openclaw.nix
     ./modules/tailscale.nix
+    ./modules/okayvpn_wireguard.nix
     ./modules/waydroid.nix
     ./overlays.nix
   ];

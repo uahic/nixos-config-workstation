@@ -41,6 +41,12 @@ in {
           port = 22;
           forwardX11 = true;
         };
+        "plutos-prod" = {
+          hostname = "85.215.210.61";
+          user = "deployer";
+          identityFile = "~/.ssh/plutos_prod";
+          identitiesOnly = true;
+        };
       };
     };
 

@@ -7,6 +7,8 @@
     "nvidia.NVreg_PreserveVideoMemoryAllocations=1"
     "nvidia.NVreg_TemporaryFilePath=/var/tmp"
     "iomem=relaxed"
+    "iommu=pt"
+    # "amd_iommu=off"   # Fallback, falls P2P weiter faultet
   ];
   boot.supportedFilesystems = ["nfs"];
   boot.blacklistedKernelModules = [

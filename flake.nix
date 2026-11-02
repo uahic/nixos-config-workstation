@@ -5,6 +5,7 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-25.11";
+    nixpkgs-vscode.url = "github:NixOS/nixpkgs/nixos-unstable";
 
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -15,6 +16,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nix-openclaw.url = "github:openclaw/nix-openclaw";
+
+    gpu-unlock = {
+      url = "github:Zagitta/gpu-unlock";
+      flake = false;
+    };
   };
 
   outputs = inputs @ {
@@ -38,5 +44,6 @@
 
     lib.mkCudaPythonShell = import ./shells/modules/cuda-python.nix;
     lib.mkQtDevShell = import ./shells/modules/qt-dev.nix;
+    lib.mkNodePnpmShell = import ./shells/modules/node-pnpm.nix;
   };
 }
