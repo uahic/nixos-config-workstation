@@ -1,0 +1,7 @@
+# sops: which keys can decrypt files under secrets/.
+# The age recipient is derived from eumel's SSH key (ssh-ed25519 ...ENEBR
+# eumel@nixos, also in modules/openclaw-vm.nix) via `ssh-to-age`.
+# Re-derive after changing keys:  ssh-to-age < ~/.ssh/id_ed25519.pub
+creation_rules:
+  - path_regex: secrets/[^/]+$
+    age: age1p52tkdynfpn48qwvsuyju0zt3pn3yx77x5nc38h490eff3vnue7qpzj0gp

@@ -17,7 +17,7 @@
     ./modules/security.nix
     ./modules/home.nix
     ./modules/music.nix
-    ./modules/ollama.nix
+    ./modules/ai.nix # Ollama + Hermes Agent + Claude (replaces ollama.nix)
     #./modules/openclaw.nix
     ./modules/tailscale.nix
     ./modules/okayvpn_wireguard.nix
